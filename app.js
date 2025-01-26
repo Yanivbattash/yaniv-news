@@ -274,35 +274,67 @@ document.getElementById('search-button').addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const tickerContent = document.getElementById('ticker-content');
-    async function fetchBreakingNews() {
-        const newsSources = [
-            { url: 'https://www.ynet.co.il/Integration/StoryRss2.xml', name: 'Ynet' },
-            { url: 'https://www.themarker.com/cmlink/1.145', name: 'TheMarker' },
-            { url: 'https://www.msn.com/he-il/money"', name:  'msn' }
-        ];
+    const apiKey = '0LVAWCC28TONCYV5';
+    const newsSources = [
+        { url: 'https://www.ynet.co.il/Integration/StoryRss2.xml', name: 'Ynet' },
+        { url: 'https://www.themarker.com/cmlink/1.145', name: 'TheMarker' },
+        { url: 'https://www.globes.co.il/news/rss.xml', name: 'Globes' },
+        { url: 'https://www.funder.co.il/rss/home.aspx', name: 'Funder' },
+        { url: 'https://www.msn.com/he-il/money', name: 'MSN כסף' }
+    ];
 
-        let newsItems = [];
+    let newsItems = [];
+    let currentIndex = 0;
+
+    // Function to fetch breaking news
+    async function fetchBreakingNews() {
+        const fetchedItems = [];
 
         for (const source of newsSources) {
             try {
                 const response = await fetch(
                     `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`
                 );
+
                 if (response.ok) {
                     const data = await response.json();
-                    newsItems.push(...data.items.map(item => `${item.title} (Source: ${source.name})`));
+                    const sourceItems = data.items.map(
+                        (item) => `${item.title}`
+                    );
+                    fetchedItems.push(...sourceItems);
                 }
             } catch (error) {
                 console.error(`Error fetching news from ${source.name}:`, error);
             }
         }
 
-        if (newsItems.length > 0) {
-            tickerContent.innerHTML = newsItems.map(item => `<span>🔴 ${item}</span>`).join('');
+        if (fetchedItems.length > 0) {
+            newsItems = fetchedItems;
+        } else if (newsItems.length === 0) {
+            // Fallback in case no data is fetched
+            newsItems = ['No breaking news available at the moment.'];
         }
     }
 
-    fetchBreakingNews();
+    // Function to rotate news items in the ticker
+    function rotateTicker() {
+        if (newsItems.length === 0) return;
+
+        tickerContent.innerHTML = `<span>${newsItems[currentIndex]}</span>`;
+        currentIndex = (currentIndex + 1) % newsItems.length;
+    }
+
+    // Initialize ticker
+    async function initializeTicker() {
+        await fetchBreakingNews();
+        rotateTicker();
+        setInterval(rotateTicker, 5000); // Rotate every 5 seconds
+        setInterval(fetchBreakingNews, 60000); // Refresh news every 60 seconds
+    }
+
+    initializeTicker();
+
+
 });
 document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.getElementById('back-to-top');
