@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתר החדשות של יניב</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>אתר החדשות של יניב</h1>
+            <div class="search-container">
+                <form action="https://www.google.com/search" method="GET" target="_blank">
+                    <input type="text" name="q" id="search-input" placeholder="חפש באתר או בגוגל..." />
+                    <button type="submit" id="search-button">
+                        <i class="fas fa-search"></i> חיפוש
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <section id="social-icons" style="margin: 20px; text-align: center;">
+        <a href="https://web.whatsapp.com" target="_blank" class="social-icon">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com" target="_blank" class="social-icon">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-icon">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://open.spotify.com" class="social-icon" target="_blank">
+            <i class="fab fa-spotify"></i>
+        </a> 
+        <a href="https://t.me" class="social-icon" target="_blank">
+            <i class="fab fa-telegram-plane"></i>
+        </a> 
+        <a href="https://www.linkedin.com/" target="_blank" class="social-icon" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+    </section>    
+    <main>
+        <section id="news-groups">
+            <div class="news-group economy">
+                <button class="group-button" onclick="toggleSubGroup('economy')">
+                    <i class="fas fa-chart-line"></i> חדשות כלכלה
+                </button>
+                <div class="sub-group" id="economy">
+                    <a href="https://www.globes.co.il" target="_blank" class="sub-button">Globes</a>
+                    <a href="https://www.themarker.com" target="_blank" class="sub-button">TheMarker</a>
+                    <a href="https://www.funder.co.il" target="_blank" class="sub-button">Funder</a>
+                    <a href="https://www.calcalist.co.il" target="_blank" class="sub-button">כלכליסט</a>
+                    <a href="https://www.msn.com/he-il/money" target="_blank" class="sub-button">MSN כסף</a>
+                </div>
+            </div>
+        
+            <div class="news-group politics">
+                <button class="group-button" onclick="toggleSubGroup('politics')">
+                    <i class="fas fa-landmark"></i> חדשות מדיני
+                </button>
+                <div class="sub-group" id="politics">
+                    <a href="https://www.ynet.co.il" target="_blank" class="sub-button">Ynet</a>
+                    <a href="https://rotter.net" target="_blank" class="sub-button">Rotter</a>
+                    <a href="https://glz.co.il/%D7%92%D7%9C%D7%A6" target="_blank" class="sub-button">גלי צה"ל</a>
+                </div>
+            </div>
+        
+            <div class="news-group general">
+                <button class="group-button" onclick="toggleSubGroup('general')">
+                    <i class="fas fa-newspaper"></i> חדשות כלליות
+                </button>
+                <div class="sub-group" id="general">
+                    <a href="https://www.walla.co.il" target="_blank" class="sub-button">Walla</a>
+                    <a href="https://www.maariv.co.il" target="_blank" class="sub-button">מעריב</a>
+                    <a href="https://www.haaretz.co.il" target="_blank" class="sub-button">הארץ</a>
+                </div>
+            </div>
+        
+            <div class="news-group sports">
+                <button class="group-button" onclick="toggleSubGroup('sports')">
+                    <i class="fas fa-futbol"></i> חדשות ספורט
+                </button>
+                <div class="sub-group" id="sports">
+                    <a href="https://www.sport5.co.il" target="_blank" class="sub-button">Sport5</a>
+                    <a href="https://www.one.co.il" target="_blank" class="sub-button">One</a>
+                </div>
+            </div>
+        
+            <div class="news-group tv-news">
+                <button class="group-button" onclick="toggleSubGroup('tv-news')">
+                    <i class="fas fa-tv"></i> ערוצי טלוויזיה
+                </button>
+                <div class="sub-group" id="tv-news">
+                    <a href="https://www.kan.org.il/" target="_blank" class="sub-button">ערוץ 11 (כאן)</a>
+                    <a href="https://www.mako.co.il/news" target="_blank" class="sub-button">ערוץ 12 (קשת)</a>
+                    <a href="https://13news.co.il/" target="_blank" class="sub-button">ערוץ 13 (רשת)</a>
+                    <a href="https://www.now14.co.il/" target="_blank" class="sub-button">ערוץ 14</a>
+                    <a href="https://www.i24news.tv/he/" target="_blank" class="sub-button">ניוז 24</a>
+                </div>
+            </div>
+        </section>
+        <div id="news-ticker">
+            <div id="ticker-content">
+                <span>🔴 מבזק: אירוע מיוחד התרחש היום...</span>
+                <span>🔴 מבזק: שוק המניות עלה ב-2%...</span>
+                <span>🔴 מבזק: מזג האוויר להיום: שמשי ונעים...</span>
+            </div>
+        </div>
+        <section id="live-updates">
+            <div id="updates-container">
+                <div class="update-column">
+                    <div id="economy-updates"></div>
+                </div>
+                <div class="update-column">
+                    <div id="politics-updates"></div>
+                </div>
+                <div class="update-column">
+                    <div id="general-updates"></div>
+                </div>
+                <div class="update-column">
+                    <div id="sports-updates"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <button id="back-to-top">↑</button>
+    <footer>
+        <p>&copy; 2025 אתר החדשות של יניב</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

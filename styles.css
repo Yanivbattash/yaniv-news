@@ -1,0 +1,356 @@
+/* רקע וגוף */
+body {
+    font-family: 'Assistant', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    color: #333;
+    text-align: center;
+}
+
+/* כותרת עליונה */
+header {
+    background: linear-gradient(90deg, #1a202c, #003366);
+    color: white;
+    padding: 40px;
+}
+
+header h1 {
+    font-size: 42px;
+    color: #007BFF;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.8), 0 0 20px rgba(0, 123, 255, 0.6);
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 123, 255, 0.8), 0 0 20px rgba(0, 123, 255, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 30px rgba(0, 123, 255, 0.8);
+    }
+}
+
+header p {
+    font-size: 18px;
+}
+
+.logo {
+    width: 100px;
+    border-radius: 50%;
+}
+
+/* לחצני הקבוצות */
+#news-groups {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.group-button {
+    background: linear-gradient(135deg, #007BFF, #003366);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.6);
+    width: 350px;
+    text-align: center;
+}
+
+.group-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 1);
+}
+
+.group-button:active {
+    transform: scale(0.95);
+}
+
+/* תתי-קבוצות */
+.sub-group {
+    display: none;
+    padding: 10px 0;
+    text-align: center;
+    animation: slideDown 0.5s ease-in-out forwards;
+}
+
+.sub-button {
+    background: linear-gradient(135deg, #0056b3, #001f4d);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-size: 18px;
+    margin: 5px 0;
+    text-decoration: none;
+    display: inline-block;
+    width: 50%;
+    transition: all 0.3s ease;
+}
+
+.sub-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+    background: linear-gradient(135deg, #0056b3, #003366);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* עיצוב עדכונים */
+#updates-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 55px;
+    margin: 35px auto;
+    padding: 20px;
+    width: 85%;
+}
+
+.update-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.update-item {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.update-item:hover {
+    background-color: #e3f2fd;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.update-item a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.update-item a:hover {
+    text-decoration: underline;
+}
+
+/* טיקר */
+#ticker-content {
+    animation: scrollTicker 15s linear infinite;
+}
+
+@keyframes scrollTicker {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* אייקוני רשתות חברתיות */
+#social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* וואטסאפ */
+.social-icon:nth-child(1) {
+    background-color: #25D366;
+}
+
+.social-icon:nth-child(1):hover {
+    background-color: #1EBE57;
+}
+
+/* פייסבוק */
+.social-icon:nth-child(2) {
+    background-color: #1877F2;
+}
+
+.social-icon:nth-child(2):hover {
+    background-color: #145DBF;
+}
+
+/* יוטיוב */
+.social-icon:nth-child(3) {
+    background-color: #FF0000;
+}
+
+.social-icon:nth-child(3):hover {
+    background-color: #CC0000;
+}
+
+/* טוויטר */
+.social-icon:nth-child(4) {
+    background-color: #1DA1F2;
+}
+
+.social-icon:nth-child(4):hover {
+    background-color: #0D95E8;
+}
+
+/* אפקט רחף לכותרת */
+header h1:hover {
+    color: #FF4500; /* צבע משתנה */
+    transform: scale(1.1); /* הגדלה קלה */
+    transition: all 0.3s ease; /* אנימציה */
+}
+
+/* ספוטיפיי */
+.social-icon:nth-child(5) {
+    background-color: #1DB954; /* צבע ירוק של ספוטיפיי */
+}
+
+.social-icon:nth-child(5):hover {
+    background-color: #1AA34A;
+}
+
+/* אפקט רחף ללוגו */
+.logo:hover {
+    transform: rotate(360deg); /* סיבוב מלא */
+    transition: transform 1s ease;
+}
+
+/* טלגרם */
+.social-icon:nth-child(6) {
+    background-color: #0088CC; /* צבע כחול של טלגרם */
+}
+
+.social-icon:nth-child(6):hover {
+    background-color: #007AB8;
+}
+
+/* לינקדאין */
+.social-icon:nth-child(7) {
+    background-color: #0077B5; /* צבע כחול של לינקדאין */
+}
+
+.social-icon:nth-child(7):hover {
+    background-color: #005582; /* צבע כהה יותר בהובר */
+}
+
+/* עיצוב תיבת החיפוש */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+#search-input {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#search-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#news-ticker {
+    background: linear-gradient(90deg, #003366, #0056b3);
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+#ticker-content {
+    display: inline-block;
+    animation: scrollTicker 15s linear infinite;
+}
+
+@keyframes scrollTicker {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}/* כפתור חזרה למעלה */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    display: none; /* מוסתר כברירת מחדל */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#back-to-top:hover {
+    background: linear-gradient(135deg, #0056b3, #003366);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 1);
+}
+
